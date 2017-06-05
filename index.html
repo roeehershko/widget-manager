@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Widget Manager</title>
+    <base ng-href="/"/>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- inject:build:css -->
+    <!-- endinject -->
+</head>
+<body class="with-side-menu theme-side-ebony-clay">
+    <div ui-view="layout"></div>
+    <!-- bower:js -->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/vendor/angular-animate/angular-animate.js"></script>
+    <script src="/vendor/angular-touch/angular-touch.js"></script>
+    <script src="/vendor/angular-messages/angular-messages.js"></script>
+    <script src="/vendor/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/vendor/number-to-words/numberToWords.min.js"></script>
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="/app/app.mdl.js"></script>
+    <script src="/app/common/directives/drv.mdl.js"></script>
+    <script src="/app/common/filter/filter.mdl.js"></script>
+    <script src="/app/common/services/srv.mdl.js"></script>
+    <script src="/app/common/layout/layout.mdl.js"></script>
+    <script src="/app/common/directives/unique-widget-name.drv.js"></script>
+    <script src="/app/common/filter/number-to-words.flt.js"></script>
+    <script src="/app/common/services/widgetsStorage.srv.js"></script>
+    <script src="/app/common/layout/layout.ctrl.js"></script>
+    <script src="/app/core/widget/widget.mdl.js"></script>
+    <script src="/app/core/dashboard/dashboard.mdl.js"></script>
+    <script src="/app/core/dashboard/dashboard.ctrl.js"></script>
+    <script src="/app/core/widget/delete-confirm/widget-delete-confirm.ctrl.js"></script>
+    <script src="/app/core/widget/details/widget-details.ctrl.js"></script>
+    <script src="/app/core/widget/edit/widget-edit.ctrl.js"></script>
+    <!-- endinject -->
+    <!-- inject:build:js -->
+    <!-- endinject -->
+</body>
+</html>

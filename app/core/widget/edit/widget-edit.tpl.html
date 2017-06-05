@@ -1,0 +1,94 @@
+<a ui-sref="app.dashboard" class="pull-right">Return to widgets list</a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span ng-show="widgetId">
+            Edit Widget #{{widgetId}}
+        </span>
+        <span ng-show="! widgetId">
+            Add New Widget
+        </span>
+    </div>
+    <div class="panel-body">
+        <form name="editWidget" novalidate>
+
+            <h4 class="page-header">Basic Info</h4>
+            <div class="form-group">
+                <label for="widgetName">Name</label>
+                <input type="text" ng-model="widget.name" class="form-control" name="widgetName" id="widgetName" required unique-widget-name="widgetId">
+                <div ng-messages="editWidget.widgetName.$error" ng-show="editWidget.widgetName.$touched || submitted" style="color:maroon" role="alert">
+                    <div ng-message="required">Name is mandatory</div>
+                    <div ng-message="uniqueName">Name is not unique</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="widgetvalue">value</label>
+                <input type="number" ng-model="widget.value" class="form-control" name="value" id="widgetvalue" required >
+                <div ng-messages="editWidget.value.$error" ng-show="editWidget.value.$touched || submitted" style="color:maroon" role="alert">
+                    <div ng-message="required">Value is mandatory</div>
+                    <div ng-message="number">Must be valid number</div>
+                </div>
+            </div>
+
+            <h4 class="page-header">Text Fields</h4>
+            <div class="edit-widget-text-fields">
+                <div ng-repeat="textField in widget.textFields track by $index" class="form-group">
+                    <div class="row">
+                        <div class="col-md-6  {{ editWidget['fieldKey' + $index].$invalid ? 'has-error' : '' }}">
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger remove-custom-field" ng-click="removeCustomField($index)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </div>
+                                <input type="text" ng-model="textField.key" class="form-control " name="fieldKey{{ $index }}" placeholder="Key.." required>
+                                <div ng-messages="editWidget['fieldKey' + $index].$error" ng-show="editWidget['fieldKey' + $index].$touched || submitted" style="color:maroon" role="alert">
+                                    <div ng-message="required">Key is mandatory</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 {{ editWidget['fieldValue' + $index].$invalid ? 'has-error' : '' }}">
+                            <input type="text" ng-model="textField.value" class="form-control" name="fieldValue{{ $index }}" placeholder="Value.." required>
+                            <div ng-messages="editWidget['fieldValue' + $index].$error" ng-show="editWidget['fieldValue' + $index].$touched || submitted" style="color:maroon" role="alert">
+                                <div ng-message="required">Value is mandatory</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form name="addCustomFieldForm" novalidate>
+            <div  class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" ng-model="newField.key" class="form-control" name="newFieldKey" placeholder="Key.." required>
+                        <div ng-messages="addCustomFieldForm.newFieldKey.$error" ng-show="addCustomFieldForm.newFieldKey.$touched || addFieldClicked" style="color:maroon" role="alert">
+                            <div ng-message="required">Key is mandatory</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" ng-model="newField.value" class="form-control" name="newFieldValue" placeholder="Value.." required>
+                            <div ng-messages="addCustomFieldForm.newFieldValue.$error" ng-show="addCustomFieldForm.newFieldValue.$touched || addFieldClicked" style="color:maroon" role="alert">
+                                <div ng-message="required">Value is mandatory</div>
+                            </div>
+                            <div class="input-group-btn">
+                                <button class="btn btn-success input-group-btn-left" ng-click="addCustomField()">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="form-group text-right">
+            <button class="btn btn-default btn-lg" ng-click="saveClicked()">
+                Save
+            </button>
+        </div>
+        <div ng-show="alert.visible" uib-alert ng-class="'alert-' + (alert.type || 'warning')" >{{ alert.msg }}</div>
+
+    </div>
+</div>

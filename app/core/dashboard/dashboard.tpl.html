@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Available Widgets</div>
+            <ul class="list-group widgets-list">
+                <li ng-repeat="widget in widgets track by $index" class="list-group-item widgets-list-widget">
+                    {{ widget.id }} | {{ widget.name }}
+                    <button class="btn btn-danger btn-sm pull-right" ng-click="deleteWidgetClicked(widget)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary btn-sm pull-right btn-details" ui-sref="app.dashboard.widgetDetails({ widgetId: widget.id })">
+                        Details
+                    </button>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+            <div class="panel-footer">
+                <button class="btn btn-success" ui-sref="app.widget.add">Add Widget</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div ui-view="widgetDetails">
+            Press "Details" button to view more details about the widget
+        </div>
+    </div>
+</div>

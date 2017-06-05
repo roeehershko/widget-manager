@@ -1,0 +1,40 @@
+@import "../vendor/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.widgets-list {
+
+  .widgets-list-widget {
+    line-height: 30px;
+  }
+}
+
+form .page-header {
+  margin-top: 0;
+}
+
+.edit-widget-text-fields {
+  .input-group-btn .btn {
+    margin-right: 11px;
+    border-radius: 0;
+  }
+
+  .input-group-btn .btn.input-group-btn-left {
+    margin-right: 0px;
+    margin-left: 11px;
+    border-radius: 0;
+  }
+
+}
+
+.input-group-btn {
+  vertical-align: top;
+}
+
+.panel {
+  max-width: 740px;
+}
+
+.btn-details {
+  margin-right: 7px;
+}
+
+
